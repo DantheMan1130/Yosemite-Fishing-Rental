@@ -1,0 +1,66 @@
+@page "{id:int?}"
+@model YosemiteFishingRental.Pages.Rentals.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<p class="text-danger">@Model.ErrorMessage</p>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Rental</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.CustomerFirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.CustomerFirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.CustomerLastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.CustomerLastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.CustomerEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.CustomerEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.CustomerPhone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.CustomerPhone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.RentalDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.RentalDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.RentalPaid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.RentalPaid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.Product)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.Product.ProductName)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Rental.RentalID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

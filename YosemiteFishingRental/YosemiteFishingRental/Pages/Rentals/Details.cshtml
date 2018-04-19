@@ -1,0 +1,67 @@
+@page "{id:int?}"
+@model YosemiteFishingRental.Pages.Rentals.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rental</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.RentalID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.RentalID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.Product)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.Product.ProductName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.CustomerFirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.CustomerFirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.CustomerLastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.CustomerLastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.CustomerEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.CustomerEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.CustomerPhone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.CustomerPhone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.RentalDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.RentalDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.RentalPaid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rental.RentalPaid)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Rental.RentalID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

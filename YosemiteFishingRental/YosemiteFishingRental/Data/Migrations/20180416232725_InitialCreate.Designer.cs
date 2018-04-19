@@ -12,9 +12,10 @@ using YosemiteFishingRental.Models;
 namespace YosemiteFishingRental.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180416232725_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,42 +199,11 @@ namespace YosemiteFishingRental.Data.Migrations
 
                     b.Property<int?>("RentalPeriod");
 
-                    b.Property<int?>("RentorPurchase");
+                    b.Property<int>("RentorPurchase");
 
                     b.HasKey("ProductID");
 
                     b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("YosemiteFishingRental.Models.Rental", b =>
-                {
-                    b.Property<int>("RentalID");
-
-                    b.Property<string>("CustomerEmail")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("CustomerFirstName")
-                        .IsRequired()
-                        .HasMaxLength(25);
-
-                    b.Property<string>("CustomerLastName")
-                        .IsRequired()
-                        .HasMaxLength(25);
-
-                    b.Property<string>("CustomerPhone")
-                        .HasMaxLength(20);
-
-                    b.Property<int>("ProductID");
-
-                    b.Property<DateTime>("RentalDate");
-
-                    b.Property<int>("RentalPaid");
-
-                    b.HasKey("RentalID");
-
-                    b.HasIndex("ProductID");
-
-                    b.ToTable("Rental");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -278,14 +248,6 @@ namespace YosemiteFishingRental.Data.Migrations
                     b.HasOne("YosemiteFishingRental.Data.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("YosemiteFishingRental.Models.Rental", b =>
-                {
-                    b.HasOne("YosemiteFishingRental.Models.Product", "Product")
-                        .WithMany("Rentals")
-                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

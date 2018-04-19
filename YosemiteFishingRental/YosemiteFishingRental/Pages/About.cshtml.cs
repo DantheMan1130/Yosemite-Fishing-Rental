@@ -12,7 +12,7 @@ namespace YosemiteFishingRental.Pages
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "General information regarding how the business works and what you can expect.";
         }
     }
 }

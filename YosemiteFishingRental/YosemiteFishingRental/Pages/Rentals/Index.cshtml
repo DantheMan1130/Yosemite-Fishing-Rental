@@ -1,0 +1,84 @@
+@page
+@model YosemiteFishingRental.Pages.Rentals.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 style="color:cornflowerblue">Rental Database</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].RentalID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].Product)
+            </th>
+            <!--<th>
+        @Html.DisplayNameFor(model => model.Rental[0].ProductID)
+    </th>--->
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].CustomerFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].CustomerLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].CustomerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].CustomerPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].RentalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].RentalPaid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Rental) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <!--<td>
+        @Html.DisplayFor(modelItem => item.ProductID)
+    </td>--->
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalPaid)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RentalID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RentalID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.RentalID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

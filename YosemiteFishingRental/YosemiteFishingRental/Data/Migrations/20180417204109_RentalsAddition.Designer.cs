@@ -12,9 +12,10 @@ using YosemiteFishingRental.Models;
 namespace YosemiteFishingRental.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180417204109_RentalsAddition")]
+    partial class RentalsAddition
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,7 +199,8 @@ namespace YosemiteFishingRental.Data.Migrations
 
                     b.Property<int?>("RentalPeriod");
 
-                    b.Property<int?>("RentorPurchase");
+                    b.Property<string>("RentorPurchase")
+                        .HasMaxLength(10);
 
                     b.HasKey("ProductID");
 
@@ -219,9 +221,6 @@ namespace YosemiteFishingRental.Data.Migrations
                     b.Property<string>("CustomerLastName")
                         .IsRequired()
                         .HasMaxLength(25);
-
-                    b.Property<string>("CustomerPhone")
-                        .HasMaxLength(20);
 
                     b.Property<int>("ProductID");
 
