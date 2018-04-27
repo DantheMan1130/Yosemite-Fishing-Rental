@@ -17,6 +17,7 @@ namespace YosemiteFishingRental.Data
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Rental> Rentals { get; set; }
+        public DbSet<File> File { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -10,23 +10,43 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by rental ID or customer last name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Rental[0].RentalID)
+                <!--@Html.DisplayNameFor(model => model.Rental[0].RentalID)-->
+                <a asp-page="./Index" asp-route-sortOrder="@Model.RentalSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Rental[0].RentalID)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Rental[0].Product)
             </th>
             <!--<th>
-        @Html.DisplayNameFor(model => model.Rental[0].ProductID)
-    </th>--->
+                @Html.DisplayNameFor(model => model.Rental[0].ProductID)
+            </th>--->
             <th>
                 @Html.DisplayNameFor(model => model.Rental[0].CustomerFirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rental[0].CustomerLastName)
+                <!--@Html.DisplayNameFor(model => model.Rental[0].CustomerLastName)-->
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Rental[0].CustomerLastName)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Rental[0].CustomerEmail)
@@ -44,41 +64,62 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Rental) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RentalID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductName)
-            </td>
-            <!--<td>
-        @Html.DisplayFor(modelItem => item.ProductID)
-    </td>--->
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RentalDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RentalPaid)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.RentalID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.RentalID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.RentalID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Rental)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentalID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <!--<td>
+                    @Html.DisplayFor(modelItem => item.ProductID)
+                </td>--->
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentalPaid)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.RentalID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.RentalID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.RentalID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.Rental.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Rental.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Rental.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Rental.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

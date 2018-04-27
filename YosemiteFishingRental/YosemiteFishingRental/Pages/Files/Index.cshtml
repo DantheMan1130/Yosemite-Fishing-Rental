@@ -1,0 +1,80 @@
+﻿@page
+@model YosemiteFishingRental.Pages.Files.IndexModel
+
+@{
+    ViewData["Title"] = "Files";
+}
+
+<h2 style="color:cornflowerblue">Files</h2>
+<hr />
+
+<h3 style="color: forestgreen">Upload Files</h3>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="FileUpload.Title" class="control-label"></label>
+                <input asp-for="FileUpload.Title" type="text" class="form-control" />
+                <span asp-validation-for="FileUpload.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileUpload.UploadPublicFile" class="control-label"></label>
+                <input asp-for="FileUpload.UploadPublicFile" type="file" class="form-control" style="height:auto" />
+                <span asp-validation-for="FileUpload.UploadPublicFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileUpload.UploadPrivateFile" class="control-label"></label>
+                <input asp-for="FileUpload.UploadPrivateFile" type="file" class="form-control" style="height:auto" />
+                <span asp-validation-for="FileUpload.UploadPrivateFile" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Upload" class="btn btn-default" />
+        </form>
+    </div>
+</div>
+
+<h3 style="color: forestgreen">Loaded Files</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.File[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.File[0].UploadDT)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.File[0].PublicFileSize)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.File[0].PrivateFileSize)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.File)
+        {
+            <tr>
+                <td>
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UploadDT)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.PublicFileSize)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.PrivateFileSize)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

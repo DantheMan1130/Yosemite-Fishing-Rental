@@ -12,6 +12,7 @@ namespace YosemiteFishingRental.Models
     {
         Rent, Purchase
     }
+
     public class Product
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

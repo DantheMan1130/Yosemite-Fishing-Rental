@@ -15,7 +15,7 @@ namespace YosemiteFishingRental.Models
     public class Rental
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "Rental ID (includes purchases)")]
+        [Display(Name = "Rental ID")]
         [Range(0, 999999)]
         public int RentalID { get; set; }
 

@@ -12,9 +12,10 @@ using YosemiteFishingRental.Models;
 namespace YosemiteFishingRental.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180421023818_AddFileTable")]
+    partial class AddFileTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,7 +200,7 @@ namespace YosemiteFishingRental.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("File");
+                    b.ToTable("Files");
                 });
 
             modelBuilder.Entity("YosemiteFishingRental.Models.Product", b =>
