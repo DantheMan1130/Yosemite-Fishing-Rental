@@ -32,6 +32,7 @@ namespace YosemiteFishingRental.Data
             }
             context.SaveChanges();
 
+            // Seed test rentals, based off of product information.
             var rentals = new Rental[]
             {
                 new Rental{RentalID=123456, ProductID=1234, CustomerFirstName="Dan", CustomerLastName="Foster", CustomerEmail="dfoster1130@gmail.com", CustomerPhone="6195654555", RentalDate=DateTime.Parse("2018-12-01"), RentalPaid=RentalPaid.No},
