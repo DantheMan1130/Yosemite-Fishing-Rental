@@ -21,7 +21,8 @@ https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-u
 You can play with the app at: ttp://yosemitefishingrental20180503034059.azurewebsites.net/.  Try creating, updating, and viewing test records!
 The app should be able to be built by being saved to your VS project directory and then running the app by clicking "Debug", then "Start Without Debugging".
 
-A PDF document describing the motivation behind our app's design and our brainstorm process, as well as insight into our project's functionality, can be found in this project repository.
+A PDF document describing the motivation behind our app's design and our brainstorming process, as well as insight into our project's functionality, can be found in this project repository (https://compe561finaldfvo.visualstudio.com/YosemiteFishingRental)
+by selecting "Code" in the top menu bar, then "Files" on the drop down.
 It is named "YFR_BrainstormingWork".
 
 # Conclusion
